@@ -1,5 +1,7 @@
+import math
+
 import numpy as np
-import math 
+
 
 def import_and_process_data():
     with open("day_04/input.txt", "r") as file:
@@ -9,14 +11,16 @@ def import_and_process_data():
             new_file.append(list(row.replace("\n", "")))
         return new_file
 
+
 def count_characters(input_data):
     count = 0
     for row in input_data:
         row = "".join(row)
         for i in range(len(row)):
             if row[i:].startswith("XMAS"):
-                count+=1
+                count += 1
     return count
+
 
 def horizontal_flip(input_data):
     new_data = []
@@ -24,8 +28,10 @@ def horizontal_flip(input_data):
         new_data.append(row[::-1])
     return new_data
 
+
 def vertical_flip(input_data):
     return np.transpose(input_data)
+
 
 def get_all_diagonals(input_data):
     new_data = []
@@ -33,6 +39,7 @@ def get_all_diagonals(input_data):
         new_data.append(np.linalg.diagonal(input_data, offset=i))
         new_data.append(np.linalg.diagonal(input_data, offset=i)[::-1])
     return new_data
+
 
 if __name__ == "__main__":
     input_data = import_and_process_data()
@@ -58,5 +65,5 @@ if __name__ == "__main__":
     # Check the flipped diagonal
     diagonal = get_all_diagonals(horizontal)
     count += count_characters(diagonal)
-    
+
     print(f"Solution: {count}")
