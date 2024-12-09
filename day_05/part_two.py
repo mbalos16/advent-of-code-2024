@@ -54,13 +54,14 @@ def get_middle_page(valid_sequences):
             result += int(sequence[idx])
     return result
 
+
 if __name__ == "__main__":
     input_data = import_and_process_data()
     conditions, sequences = process_data(input_data=input_data)
     valid_sequences, invalid_sequences = find_valid_invalid_sequences(
         sequences=sequences, conditions=conditions
     )
-    
+
     new_sequences = []
     for sequence in invalid_sequences:
         invalid_sequence = True
@@ -74,7 +75,7 @@ if __name__ == "__main__":
                             sequence[sequence.index(rule[0])] = rule[1]
                             sequence[sequence.index(rule[1])] = rule[0]
                     else:
-                        valid_rule_count +=1
+                        valid_rule_count += 1
             new_sequences.append(sequence)
             invalid_sequence = False
     result = get_middle_page(new_sequences)
