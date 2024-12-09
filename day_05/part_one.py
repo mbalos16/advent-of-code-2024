@@ -1,5 +1,4 @@
 import math
-import random
 
 
 def import_and_process_data():
@@ -46,11 +45,14 @@ def find_valid_invalid_sequences(sequences, conditions):
             non_valid_sequences.append(sequence)
     return valid_sequences, non_valid_sequences
 
-    def get_middle_page(valid_sequences):
-        for sequence in valid_sequences:
-            if len(sequence) > 1:
-                idx = math.floor(len(sequence) / 2)
-                result += int(sequence[idx])
+
+def get_middle_page(valid_sequences):
+    result = 0
+    for sequence in valid_sequences:
+        if len(sequence) > 1:
+            idx = math.floor(len(sequence) / 2)
+            result += int(sequence[idx])
+    return result
 
 
 if __name__ == "__main__":
