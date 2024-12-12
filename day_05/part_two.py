@@ -74,11 +74,13 @@ def transform_invalid_to_valid(invalid_sequence, conditions):
             invalid_sequence = False
     return new_sequences
 
+
 if __name__ == "__main__":
     input_data = import_and_process_data()
     conditions, sequences = process_data(input_data=input_data)
     valid_sequences, invalid_sequences = find_valid_invalid_sequences(
-        sequences=sequences, conditions=conditions)
+        sequences=sequences, conditions=conditions
+    )
     transformed_sequences = transform_invalid_to_valid(invalid_sequences, conditions)
     result = get_middle_page(transformed_sequences)
     print(f"Solution: {result}")
